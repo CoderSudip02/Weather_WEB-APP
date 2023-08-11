@@ -5,6 +5,7 @@ const grantAccessContainer =document.querySelector(".grant-location");
 const searchForm=document.querySelector("[data-searchForm]");
 const loadingScreen= document.querySelector(".loading-container");
 const userInfoContainer=document.querySelector(".user-info-container");
+const errorcontainer=document.querySelector(".error-container");
 
 // Initially needed varriables
 
@@ -67,6 +68,7 @@ function getfromSessionStorage(){
 async function fetchUserWeatherInfo(coordinates) {
     const { lat, lon } = coordinates;
     grantAccessContainer.classList.remove("active");
+    errorcontainer.classList.remove("active");
     loadingScreen.classList.add("active");
     // console.log("Loading screen enabled")
 
@@ -75,6 +77,7 @@ async function fetchUserWeatherInfo(coordinates) {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
         const data = await response.json(); // Await for the JSON data to be resolved
         loadingScreen.classList.remove("active");
+        errorcontainer.classList.remove("active");
         userInfoContainer.classList.add("active");
         // console.log("api call succesfull");
         renderWeatherInfo(data);
@@ -149,17 +152,25 @@ async function fetchSearchWeatherInfo(city){
     loadingScreen.classList.add("active");
     userInfoContainer.classList.remove("active");
     grantAccessContainer.classList.remove("active");
+    errorcontainer.classList.remove("active");
     
 
     try{
         const response= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         const data= await response.json();
         loadingScreen.classList.remove("active");
+        errorcontainer.classList.remove("active");
         userInfoContainer.classList.add("active");
         renderWeatherInfo(data);
+        if (!response.ok) {
+            throw new Error('API request failed');
+          }
         
     }
-    catch{
+    catch(err){
+        userInfoContainer.classList.remove("active");
+        errorcontainer.classList.add("active");
+
 
     }
 

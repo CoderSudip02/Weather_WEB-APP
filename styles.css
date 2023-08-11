@@ -228,3 +228,35 @@ h1{
     justify-content: center;
     border-radius: 100%;
 }
+
+.error-container{
+    display: none;
+
+}
+
+.error-container.active{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 550px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 0 10px;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+.error-container img{
+    width: 250px;
+    height: 250px;
+}
+
+.error-container p{
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 1.75px;
+    padding:5px 8px;
+    color: rgba(255, 255, 255, 0.7);
+
+}
