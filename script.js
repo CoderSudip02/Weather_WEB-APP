@@ -32,6 +32,7 @@ function switchTab(clickedTab){
         else{
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
+            errorcontainer.classList.remove("active");
             //Local Storage for coordinates
             // console.log("Switch tab to main");
             getfromSessionStorage(); 
