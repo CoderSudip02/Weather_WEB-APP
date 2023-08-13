@@ -14,6 +14,7 @@
 }
 
 .wrapper{
+    overflow:auto;
     width:100vw;
     height:100vh;
     color:var(--colorLight2);
@@ -261,19 +262,89 @@ h1{
 
 }
 
-@media (max-width: 768px) {
-    /* Adjust font size for smaller screens */
-    body {
-      font-size: 16px;
+@media (max-width:600px){
+    .wrapper{
+        margin: 0;
+        padding: 0;
     }
+
+
+    .parameter-container{
+        display: flex;
+        flex-direction: column;
+        gap: 3px 2px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .parameter{
+        width: 80%;
+        max-width: 200px;
+        
+    }
+
+    .user-info-container p[data-temp]{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+}
+
+@media(max-width:300px){
+    .tab-container{
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width:260px){
+    .form-container input::placeholder{
+        text-align: justify;
+        font-size: 4.3vw;
+        padding: 0 0;
+        
+    }
+    .form-container input{
+        width: calc(100% - 80px);
+        height: 30px;
+    }
+
+    .form-container .btn{
+        padding: unset;
+        width: 28px;
+        height: 28px;
+    }
+
+}
+@media(max-width:320px){
+    .grant-location img{
+        margin-top: 2rem;
+    
+    }
+
+    .grant-location{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grant-location p:first-of-type{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .grant-location p:last-of-type{
+        font-size: 0.60rem;
+        font-weight: 400;
+    }
+    .grant-location .btn{
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        border-radius: 4.5px ;
+    }
+}
+
+
   
-    /* Rearrange elements for better layout */
-    .wrapper {
-      flex-direction: column;
-    }
   
-    /* Hide certain elements on small screens */
-    .sidebar {
-      display: none;
-    }
-  }
+ 
